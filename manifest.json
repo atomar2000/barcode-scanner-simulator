@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "name": "Barcode Simulator",
+  "description": "Simulates a barcode scan",
+  "version": "1.0",
+  "action": {
+    "default_popup": "barcodeSimulator.html",
+    "default_icon": "extension_icon.png"
+  },
+  "permissions": [
+    "tabs",
+    "activeTab",
+    "scripting",
+    "storage"
+  ],
+  "host_permissions": [
+    "http://*/*",
+    "https://*/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "simulator.js"
+      ]
+    }
+  ]
+}

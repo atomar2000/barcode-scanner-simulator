@@ -1,0 +1,189 @@
+body {
+    margin: 0;
+    min-width: 280px;
+    min-height: 300px;
+    padding: 10px;
+    border-style: solid;
+    border-width: 5px;
+    border-color: #318CE7;
+}
+
+img {
+    max-width: 480px;
+    object-fit: cover;
+}
+
+#internalArea {
+    height: 290px;
+}
+
+#appHeading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0px;
+}
+
+#barcodeTypeDiv {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#barcodeImageDiv {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#recentBarcodeTitle {
+    margin: 0 0 5 0;
+}
+
+#recentBarcodesTxt {
+    font-weight: 700;
+}
+
+#author {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: right;
+    margin-bottom: 20px;
+    font-size: 0.7rem;
+}
+
+#recentBarcodes {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-bottom: 10px;
+    white-space: nowrap;
+}
+
+ul {
+margin: 0;
+padding: 0;
+list-style-type: none;
+}
+
+li {
+    list-style-type: none;
+}
+
+#buttonDiv {
+    margin-top: 5px;
+}
+
+#loadingSpinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #318CE7;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+#scanButton {
+    width: 100%;
+}
+
+#generateBarcode2D {
+    flex-grow: 1;
+}
+
+#generateBarcode1D {
+    flex-grow: 1;
+    margin-right: 3px;
+}
+
+#barcodeInput {
+    width: 100%;
+}
+
+#searchArea{
+    width: 100%;
+}
+
+button {
+    background-color: white;
+    color: black;
+    padding: auto;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #579ee4;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 5px;
+    transition: background-color 0.2s;
+}
+
+/* Hover state */
+button:hover {
+    background-color: #318CE7;
+    color: white;
+    padding: auto;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #318CE7;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Active/Clicked state */
+button:active {
+    background-color: #0653a0;
+    color: white;
+    padding: auto;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #318CE7;
+    border-radius: 4px;
+    cursor: pointer; /* Change the color to something else */
+}
+
+li button {
+    background-color: white;
+    color: black;
+    padding: auto;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #579ee4;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-bottom: 5px;
+    transition: background-color 0.2s;
+}
+
+/* Hover state */
+li button:hover {
+    background-color: #318CE7;
+    color: white;
+    padding: auto;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #318CE7;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+/* Active/Clicked state */
+li button:active {
+    background-color: #0653a0;
+    color: white;
+    padding: auto;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #318CE7;
+    border-radius: 20px;
+    cursor: pointer; /* Change the color to something else */
+}
