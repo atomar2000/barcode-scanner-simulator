@@ -13,5 +13,6 @@ This mimics barcode scanning where the scanner uses keyboard like input for the 
 ---
 ## This is how the UI looks
 
-<img src="./resources/UI.png"  width="300" height="300">
+<img src="./resources/UI1.png"  width="250" height="300">
+<img src="./resources/UI2.png"  width="250" height="300">
 
