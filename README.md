@@ -3,7 +3,7 @@ This is a chrome extension that allows the user to simulate a barcode scan and a
 This mimics barcode scanning where the scanner uses keyboard like input for the scan.
 
 # How to use this?
-1. Download this repo in your machine.
+1. Download this repo in your machine. [click here to download](https://github.com/atomar2000/barcode-scanner-simulator/archive/refs/tags/v1.0.0-alpha.zip)
 2. Go to ``chrome://extensions/`` and Enable Developer Mode on the top right hand side.
 3. Click on ``Load unpacked`` on the top left hand side.
 4. Browse and select the downloaded folder from step 1.
