@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <script src="main.js"></script>
+    <div id="internalArea">
+      <h2 id="appHeading">BARCODE SCAN SIMULATOR</h2>
+      <span id="author">Author: Anurag Tomar</span>
+      <div>
+        <div id="searchArea">
+          <input id="barcodeInput" placeholder="Enter barcode text here" />
+        </div>
+        <div id="buttonDiv">
+          <button id="scanButton">Scan</button>
+          <div id="barcodeTypeDiv">
+            <button id="generateBarcode1D">Create 1D-Barcode</button>
+            <button id="generateBarcode2D">Create 2D-Barcode</button>
+          </div>
+        </div>
+        <div id="barcodeImageDiv">
+          <div id="loadingSpinner"></div>
+          <img id="barcodeImage" src="" />
+        </div>
+        <span id="recentBarcodesTxt">Recent Barcodes: </span>
+        <div id="recentBarcodes"></div>
+        <div id="projectVersion">
+          <a id="udpateRequired"></a>
+          <span id="currentVersion"></span>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

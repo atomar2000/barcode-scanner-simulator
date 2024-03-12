@@ -1,3 +1,7 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
 body {
     margin: 0;
     min-width: 280px;
@@ -14,7 +18,8 @@ img {
 }
 
 #internalArea {
-    height: 290px;
+    padding: 0px;
+    margin: 0px;
 }
 
 #appHeading {
@@ -24,8 +29,24 @@ img {
     margin-bottom: 0px;
 }
 
+#currentVersion {
+    font-size: xx-small;
+    color: rgb(164, 164, 164);
+}
+
+#udpateRequired {
+    font-size: x-small;
+}
+
 #barcodeTypeDiv {
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#projectVersion {
+    display: flex;
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
 }
@@ -57,7 +78,6 @@ img {
 #recentBarcodes {
     margin-top: 5px;
     margin-bottom: 5px;
-    padding-bottom: 10px;
     white-space: nowrap;
 }
 
@@ -106,18 +126,27 @@ li {
     margin-right: 3px;
 }
 
-#barcodeInput {
-    width: 100%;
+#searchArea{
+    display: flex;
 }
 
-#searchArea{
-    width: 100%;
+#barcodeInput {
+    flex-grow: 1;
+    padding: 2px;
+    padding-right: 5px;
+    padding-left: 5px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #579ee4;
+    border-radius: 4px;
 }
 
 button {
     background-color: white;
     color: black;
-    padding: auto;
+    padding: 2px;
+    padding-right: 5px;
+    padding-left: 5px;
     border-style: solid;
     border-width: 1px;
     border-color: #579ee4;
@@ -131,7 +160,6 @@ button {
 button:hover {
     background-color: #318CE7;
     color: white;
-    padding: auto;
     border-style: solid;
     border-width: 1px;
     border-color: #318CE7;
@@ -143,7 +171,6 @@ button:hover {
 button:active {
     background-color: #0653a0;
     color: white;
-    padding: auto;
     border-style: solid;
     border-width: 1px;
     border-color: #318CE7;
@@ -154,7 +181,10 @@ button:active {
 li button {
     background-color: white;
     color: black;
-    padding: auto;
+    margin: 2px;
+    padding: 2px;
+    padding-right: 5px;
+    padding-left: 5px;
     border-style: solid;
     border-width: 1px;
     border-color: #579ee4;

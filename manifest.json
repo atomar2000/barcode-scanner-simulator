@@ -4,7 +4,7 @@
   "description": "Simulates a barcode scan",
   "version": "1.0",
   "action": {
-    "default_popup": "barcodeSimulator.html",
+    "default_popup": "./dist/index.html",
     "default_icon": "extension_icon.png"
   },
   "permissions": [
@@ -23,7 +23,7 @@
         "<all_urls>"
       ],
       "js": [
-        "simulator.js"
+        "./src/index.js"
       ]
     }
   ]
