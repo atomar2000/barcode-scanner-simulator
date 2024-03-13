@@ -20,6 +20,8 @@ img {
 #internalArea {
     padding: 0px;
     margin: 0px;
+    flex-grow: 1;
+    min-height: 300px;
 }
 
 #appHeading {

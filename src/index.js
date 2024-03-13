@@ -1,7 +1,5 @@
 const latestTagModule = require('./latestTag');
-import currentVersion from './projectVersion.json';
-// var latestTag = document.appendChild(document.createElement("p"))
-// latestTag.textContent = latestTagResponse
+const currentVersion = require('./projectVersion.json');
 
 const barcodeTypes = new Map();
 
@@ -26,7 +24,6 @@ window.onload = function () {
 function displayProjectUpdates() {  
   document.getElementById("currentVersion").textContent = currentVersion.version;
   latestTagModule.getLatestTagJson().then((result) => {
-    console.log("result: ", result);
     if(result.status === 200) {      
       if(currentVersion.version !== result.data?.tag_name) {
         document.getElementById("udpateRequired").setAttribute("href", result.data?.html_url);
@@ -41,7 +38,8 @@ var barcodeData = "";
 var barcodeURL_end = "";
 
 function onGenerate(event) {
-  const input = document.getElementById("barcodeInput").value;
+  var input = document.getElementById("barcodeInput").value;
+  input = input.replace("|", "\\F");
   barcodeData = parseInput(input);
   if (event.target.textContent === "Create 1D-Barcode") {
     barcodeURL_end = barcodeTypes.get("1D");
@@ -54,11 +52,9 @@ function onGenerate(event) {
 }
 
 async function onScan() {
-  console.log("onScan called?");
   const input = document.getElementById("barcodeInput").value;
   await updateCache(input);
   const curr_tab = await getCurrentTab();
-  console.log("curr_tab: ", curr_tab);
   chrome.scripting
     .executeScript({
       target: { tabId: curr_tab.id },
@@ -70,7 +66,6 @@ async function onScan() {
 
 function typeText(text) {
   const inputElement = window.document.activeElement;
-  if (inputElement) console.log("activeElement: ", inputElement);
   for (const char of text) {
     var event = new KeyboardEvent("keydown", { key: char });
     window.document.dispatchEvent(event);
@@ -88,7 +83,6 @@ function typeText(text) {
 
 function parseInput(input) {
   var encodedInput = encodeURI(input);
-  encodedInput.replace("%7C", "%5CF");
   return encodedInput;
 }
 
@@ -119,7 +113,6 @@ async function updateCache(input) {
   await chrome.storage.local.get(["barcodeCacheData"]).then((result) => {
     previousBarcodes = result.barcodeCacheData;
   });
-  console.log("previous barcodes: ", previousBarcodes);
   var newBarcodeList = [];
   if (previousBarcodes && input && input.length) {
     for (var i = 0; i < previousBarcodes.length; i++) {
@@ -151,7 +144,6 @@ async function updateCache(input) {
     cacheTime: Date.now(),
   });
   const recentBarcodes = document.querySelector("#recentBarcodes");
-  console.log("recentBarcodesDiv: ", recentBarcodes);
   if (
     recentBarcodes !== undefined &&
     recentBarcodes !== null &&
@@ -162,7 +154,6 @@ async function updateCache(input) {
   if (recentBarcodes !== undefined && recentBarcodes !== null) {
     recentBarcodes.appendChild(ulElement);
   }
-  console.log("reached end? updateCache");
 }
 
 function onButtonClick(event) {
