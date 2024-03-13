@@ -1,5 +1,5 @@
-const latestTagModule = require('./latestTag');
-const currentVersion = require('./projectVersion.json');
+const latestTagModule = require("./latestTag");
+const currentVersion = require("./projectVersion.json");
 
 const barcodeTypes = new Map();
 
@@ -21,13 +21,22 @@ window.onload = function () {
   displayProjectUpdates();
 };
 
-function displayProjectUpdates() {  
-  document.getElementById("currentVersion").textContent = currentVersion.version;
+function displayProjectUpdates() {
+  var currentVersionElement = document.getElementById("currentVersion");
+  if (currentVersionElement !== null && currentVersionElement !== undefined)
+    currentVersionElement.textContent = currentVersion.version;
   latestTagModule.getLatestTagJson().then((result) => {
-    if(result.status === 200) {      
-      if(currentVersion.version !== result.data?.tag_name) {
-        document.getElementById("udpateRequired").setAttribute("href", result.data?.html_url);
-        document.getElementById("udpateRequired").text = "Click here to upgrade to: " + result.data?.tag_name;
+    if (result.status === 200) {
+      if (currentVersion.version !== result.data?.tag_name) {
+        var updateRequiredElement = document.getElementById("udpateRequired");
+        if (
+          updateRequiredElement !== null &&
+          updateRequiredElement !== undefined
+        ) {
+          updateRequiredElement.setAttribute("href", result.data?.html_url);
+          updateRequiredElement.text =
+            "Click here to upgrade to: " + result.data?.tag_name;
+        }
       }
     }
   });
