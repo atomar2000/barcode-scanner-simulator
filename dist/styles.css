@@ -12,7 +12,7 @@ body {
     border-color: #318CE7;
 }
 
-img {
+#barcodeImage {
     max-width: 480px;
     object-fit: cover;
 }
@@ -75,6 +75,8 @@ img {
     justify-content: right;
     margin-bottom: 20px;
     font-size: 0.7rem;
+    font-size: x-small;
+    color: rgb(134, 134, 134);
 }
 
 #recentBarcodes {

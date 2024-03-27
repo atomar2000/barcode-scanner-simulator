@@ -49,6 +49,9 @@ var barcodeURL_end = "";
 function onGenerate(event) {
   var input = document.getElementById("barcodeInput").value;
   input = input.replace("|", "\\F");
+  input = input.replace("<Alt>", "");
+  input = input.replace("<Ctrl>", "");
+  input = input.replace("<GS>", "\\F");
   barcodeData = parseInput(input);
   if (event.target.textContent === "Create 1D-Barcode") {
     barcodeURL_end = barcodeTypes.get("1D");
@@ -64,7 +67,7 @@ async function onScan() {
   const input = document.getElementById("barcodeInput").value;
   await updateCache(input);
   const curr_tab = await getCurrentTab();
-  chrome.scripting
+  await chrome.scripting
     .executeScript({
       target: { tabId: curr_tab.id },
       func: typeText,
@@ -74,12 +77,37 @@ async function onScan() {
 }
 
 function typeText(text) {
+  text = text.replace("<Alt>", '\u001B');
+  console.log("text: ", text);
+  text = text.replace("<Ctrl>", "\u001C");
+  console.log("text: ", text);
+  text = text.replace("<GS>", '\u001D');
+  console.log("text: ", text);
   const inputElement = window.document.activeElement;
-  for (const char of text) {
-    var event = new KeyboardEvent("keydown", { key: char });
+  for (var idx = 0; idx < text.length; idx++) {
+    altPressed = false;
+    ctrlPressed = false;
+    while (
+      idx < text.length &&
+      (text[idx] == "\u001B" || text[idx] == "\u001C")
+    ) {
+      if (text[idx] == "\u001B") {
+        altPressed = true;
+        idx++;
+      }
+      if (text[idx] == "\u001C") {
+        ctrlPressed = true;
+        idx++;
+      }
+    }
+    var event = new KeyboardEvent("keydown", {
+      key: text[idx],
+      altKey: altPressed,
+      ctrlKey: ctrlPressed,
+    });
     window.document.dispatchEvent(event);
     if (inputElement) {
-      inputElement.value += char;
+      inputElement.value += text[idx];
       inputElement.dispatchEvent(new Event("input"));
     }
   }
@@ -124,10 +152,12 @@ async function updateCache(input) {
   });
   var newBarcodeList = [];
   if (previousBarcodes && input && input.length) {
+    var barcodeList = [];
     for (var i = 0; i < previousBarcodes.length; i++) {
-      if (previousBarcodes[i] === input) return;
+      if (previousBarcodes[i] === input) continue;
+      barcodeList.push(previousBarcodes[i]);
     }
-    newBarcodeList = [input, ...previousBarcodes];
+    newBarcodeList = [input, ...barcodeList];
   } else if (previousBarcodes) {
     newBarcodeList = previousBarcodes;
   } else if (input && input.length) {
