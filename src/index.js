@@ -119,11 +119,12 @@ function typeText(text) {
 }
 
 function parseInput(input) {
-  var encodedInput = encodeURI(input);
+  var encodedInput = encodeURIComponent(input);
   return encodedInput;
 }
 
 function updateImage(barcodeData) {
+
   document.getElementById("barcodeImage").setAttribute("src", "");
   if (!barcodeData || barcodeData.length === 0) {
     document.getElementById("loadingSpinner").style.display = "none";
